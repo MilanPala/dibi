@@ -49,6 +49,19 @@ test(function () use ($config) {
 
 	$conn->disconnect();
 	Assert::false($conn->isConnected());
+
+	$conn->connect();
+	Assert::true($conn->isConnected());
+	$conn->query('SELECT 1');
+
+	sleep(5);
+
+	$conn->disconnect();
+	Assert::false($conn->isConnected());
+
+	$conn->connect();
+	Assert::true($conn->isConnected());
+	$conn->query('SELECT 1');
 });
 
 
